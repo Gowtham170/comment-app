@@ -43,8 +43,9 @@ router.route('/login').post( async(req, res) => {
     } 
 
     //checking the correctness of the password 
-    //const valid = await ;
-    if(!(JSON.stringify(cryptojs.AES.decrypt(req.body.password, this.toString(HASH_SECRET_KEY).toString()) === user.password))) {
+    const password = req.body.password;
+    const decryptedPassword = cryptojs.AES.decrypt((user.password), this.toString(HASH_SECRET_KEY)).toString(cryptojs.enc.Utf8);
+    if(!(password === decryptedPassword)) {
         return res.status(400).json('Invalid password');
     }
 
