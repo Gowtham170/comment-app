@@ -5,7 +5,6 @@ const cryptojs =require('crypto-js');
 const jwt = require('jsonwebtoken');
 
 const userModel = require('../schema/userModel');
-const { AES } = require('crypto-js');
 
 dotenv.config();
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
@@ -21,7 +20,7 @@ router.route('/register').post( async(req, res) => {
     }
 
     const email = req.body.email;
-    const password = await cryptojs.AES.encrypt(req.body.password, this.toString(HASH_SECRET_KEY).toString());
+    const password = cryptojs.AES.encrypt(req.body.password, this.toString(HASH_SECRET_KEY).toString());
     console.log(password);
     const secret = req.body.secret;
     

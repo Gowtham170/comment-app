@@ -4,7 +4,8 @@
   "description": "service for the comment application",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index"
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "author": "gowtham",
   "license": "ISC",

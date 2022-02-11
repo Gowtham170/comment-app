@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
+//imports routes
 const userRoutes = require('./routes/user');
 const commentRoutes = require('./routes/comment');
 
