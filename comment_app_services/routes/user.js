@@ -1,7 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
 const cryptojs =require('crypto-js');
 const jwt = require('jsonwebtoken');
 
@@ -56,11 +55,23 @@ router.route('/login').post( async(req, res) => {
 
 //forgot password
 router.route('/forgotpassword').post(async(req, res) => {
+    try {
     const secretKey = req.body.secret;
     const email = req.body.email;
-    await userModel.find({email: email, key: secretKey}).select('+password')
-             .then((user) => res.json({status:'ok', password: cryptojs.AES.decrypt((user[0].password), this.toString(HASH_SECRET_KEY)).toString(cryptojs.enc.Utf8)}))
-             .catch((err) => console.log(err)); 
+    const user = await userModel.find({email: email, key: secretKey}).select('+password');
+    if(!user) {
+        return res.status(400).json('user is not found');
+    }
+    if(!((user[0].secret == secretKey))) {
+            res.status(400).json('Email and secretkey incorrect');
+        }
+    else {
+            res.json({status:'ok', password: cryptojs.AES.decrypt((user[0].password), this.toString(HASH_SECRET_KEY)).toString(cryptojs.enc.Utf8)});
+        }
+    }
+    catch(error) {
+        res.status(400).json('please provide the vaild details')
+    }
 });
 
 module.exports = router;

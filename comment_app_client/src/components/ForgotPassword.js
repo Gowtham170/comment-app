@@ -19,7 +19,7 @@ export default function ForgotPassword() {
 
     const user = {
       email: values.email,
-      password: values.password
+      secret: values.secret,
     }
 
     fetch('http://localhost:5000/api/user/forgotpassword', {
