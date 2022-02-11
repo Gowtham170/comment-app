@@ -15,3 +15,7 @@ step-6: Now, give the 'npm start' command from the terminal, that will start the
 step-7: Next, open another terminal and navigate to the client folder(cd comment_app_client).
 
 step-8: After that give the 'npm start' command to start the client. It will start the development server and open the application in the default browser.
+
+
+https://user-images.githubusercontent.com/69344863/153607014-b2033a06-e56b-4466-aa95-69894c960fe2.mp4
+
