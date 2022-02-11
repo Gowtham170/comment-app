@@ -1,8 +1,8 @@
 # comment-app
 
-step-1: download/clone the code.
+step-1: Download the zip file.
 
-step-2: After, cloning you have two folders, one for the client and the another for the server-side.
+step-2: After, downloading you have two folders, one for the client and the another for the server-side.
 
 step-3: navigate to the server-side folder(cd comment_app_services) from your terminal.
 
